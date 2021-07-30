@@ -4,7 +4,8 @@
   "description": "An action that parses an https://github.com/leoafarias/fvm config file into environment variables which can then be used to configure the https://github.com/subosito/flutter-action.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js --license licenses.txt"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   "homepage": "https://github.com/kuhnroyal/flutter-fvm-config-action#readme",
   "dependencies": {
     "@actions/core": "^1.4.0",
+    "@vercel/ncc": "^0.29.0",
     "fs": "^0.0.1-security",
     "path": "^0.12.7"
   }
