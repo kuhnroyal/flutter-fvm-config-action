@@ -7,4 +7,4 @@ inputs:
     default: '.fvm/fvm_config.json'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
