@@ -1,5 +1,6 @@
 name: 'Flutter FVM config action'
-description: 'An action that parses an https://github.com/leoafarias/fvm config file into environment variables which can then be used to configure the https://github.com/subosito/flutter-action.'
+description: 'Action that parses an FVM config file in order to configure the subosito/flutter-action.'
+author: 'Peter Leibiger'
 inputs:
   path:
     description: 'Path to the FVM config file'
@@ -8,3 +9,6 @@ inputs:
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: 'maximize'
+  color: 'blue'
