@@ -10,7 +10,7 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
     steps:
       - uses: actions/checkout@v2
       - uses: kuhnroyal/flutter-fvm-config-action@v1
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: ${{ env.FLUTTER_CHANNEL }}
@@ -23,7 +23,7 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
       - uses: kuhnroyal/flutter-fvm-config-action@v1
         with:
           path: 'some-path/.fvm/fvm_config.json'
-      - uses: subosito/flutter-action@v1
+      - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: ${{ env.FLUTTER_CHANNEL }}
