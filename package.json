@@ -20,7 +20,7 @@
   "homepage": "https://github.com/kuhnroyal/flutter-fvm-config-action#readme",
   "dependencies": {
     "@actions/core": "^1.9.1",
-    "@vercel/ncc": "^0.29.0",
+    "@vercel/ncc": "^0.34.0",
     "fs": "^0.0.1-security",
     "path": "^0.12.7"
   }
