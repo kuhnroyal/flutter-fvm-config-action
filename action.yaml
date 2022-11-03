@@ -6,6 +6,10 @@ inputs:
     description: 'Path to the FVM config file'
     required: false
     default: '.fvm/fvm_config.json'
+  flavor:
+    description: 'Flavor to use'
+    required: false
+    default: ''
 runs:
   using: 'node16'
   main: 'dist/index.js'
