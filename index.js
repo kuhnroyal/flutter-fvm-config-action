@@ -30,8 +30,14 @@ try {
     }
 
     const parts = rawVersion.split('@');
-    const version = parts[0];
-    const channel = parts.length > 1 ? parts[1] : 'stable';
+    let version = parts[0];
+    let channel = parts.length > 1 ? parts[1] : 'stable';
+
+    const flutterChannels = ['stable', 'beta', 'master'];
+    if (flutterChannels.includes(version)) {
+        channel = version;
+        version = '';
+    }
 
     function setVariable(name, value) {
         core.info(`SET ENV '${name}' = ${value}`);
