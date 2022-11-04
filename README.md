@@ -28,3 +28,16 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
           flutter-version: ${{ env.FLUTTER_VERSION }}
           channel: ${{ env.FLUTTER_CHANNEL }}
 ```
+
+### Reading specific flavor
+```yaml
+    steps:
+      - uses: actions/checkout@v2
+      - uses: kuhnroyal/flutter-fvm-config-action@v1
+        with:
+          flavor: 'staging'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: ${{ env.FLUTTER_CHANNEL }}
+```

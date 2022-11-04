@@ -4,17 +4,40 @@ const core = require('@actions/core');
 
 try {
     const configPath = core.getInput('path');
+
     const fullPath = path.resolve(configPath);
     core.info(`Processing file: ${fullPath}`);
 
     const contents = fs.readFileSync(fullPath);
     const config = JSON.parse(contents);
 
-    const flutterSdkVersion = config['flutterSdkVersion'];
-    const parts = flutterSdkVersion.split('@');
+    const flavor = core.getInput('flavor');
+    let rawVersion;
 
-    const version = parts[0];
-    const channel = parts.length > 1 ? parts[1] : 'stable';
+    if (flavor && flavor !== '') {
+        core.info(`Reading flavor: ${flavor}`);
+        rawVersion = config['flavors'][flavor];
+
+        if (rawVersion) {
+            core.info(`Flavor found: ${flavor}, version: ${rawVersion}`);
+        } else {
+            core.setFailed(`Flavor not found: ${flavor}`);
+            return;
+        }
+    } else {
+        core.info(`Reading default version`);
+        rawVersion = config['flutterSdkVersion'];
+    }
+
+    const parts = rawVersion.split('@');
+    let version = parts[0];
+    let channel = parts.length > 1 ? parts[1] : 'stable';
+
+    const flutterChannels = ['stable', 'beta', 'master'];
+    if (flutterChannels.includes(version)) {
+        channel = version;
+        version = '';
+    }
 
     function setVariable(name, value) {
         core.info(`SET ENV '${name}' = ${value}`);
@@ -26,4 +49,3 @@ try {
 } catch (error) {
     core.setFailed(error.message);
 }
-
