@@ -2843,13 +2843,14 @@ try {
         version = '';
     }
 
-    function setVariable(name, value) {
-        core.info(`SET ENV '${name}' = ${value}`);
-        core.exportVariable(name, value);
+    function setVariableAndOutput(envName, outputName, value) {
+        core.info(`SET ENV '${envName}' = ${value}`);
+        core.setOutput(outputName, value);
+        core.exportVariable(envName, value);
     }
 
-    setVariable('FLUTTER_VERSION', version);
-    setVariable('FLUTTER_CHANNEL', channel);
+    setVariableAndOutput('FLUTTER_VERSION', 'flutterVersion', version);
+    setVariableAndOutput('FLUTTER_CHANNEL', 'flutterChannel', channel);
 } catch (error) {
     core.setFailed(error.message);
 }

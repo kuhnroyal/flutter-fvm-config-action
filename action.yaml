@@ -10,6 +10,11 @@ inputs:
     description: 'Flavor to use'
     required: false
     default: ''
+outputs:
+  flutterVersion:
+    description: 'The version of Flutter written in the fvm configuration file'
+  flutterChannel:
+    description: 'The channel of Flutter written in the fvm configuration file'
 runs:
   using: 'node16'
   main: 'dist/index.js'
