@@ -39,14 +39,14 @@ try {
         version = '';
     }
 
-    function setVariableAndOutput(envName, outputName, value) {
-        core.info(`SET ENV '${envName}' = ${value}`);
-        core.setOutput(outputName, value);
-        core.exportVariable(envName, value);
+    function setVariableAndOutput(name, value) {
+        core.info(`SET ENV '${name}' = ${value}`);
+        core.setOutput(name, value);
+        core.exportVariable(name, value);
     }
 
-    setVariableAndOutput('FLUTTER_VERSION', 'flutterVersion', version);
-    setVariableAndOutput('FLUTTER_CHANNEL', 'flutterChannel', channel);
+    setVariableAndOutput('FLUTTER_VERSION', version);
+    setVariableAndOutput('FLUTTER_CHANNEL', channel);
 } catch (error) {
     core.setFailed(error.message);
 }

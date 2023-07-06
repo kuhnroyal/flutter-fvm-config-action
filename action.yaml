@@ -11,9 +11,9 @@ inputs:
     required: false
     default: ''
 outputs:
-  flutterVersion:
+  FLUTTER_VERSION:
     description: 'The version of Flutter written in the fvm configuration file'
-  flutterChannel:
+  FLUTTER_CHANNEL:
     description: 'The channel of Flutter written in the fvm configuration file'
 runs:
   using: 'node16'
