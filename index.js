@@ -39,13 +39,14 @@ try {
         version = '';
     }
 
-    function setVariable(name, value) {
+    function setVariableAndOutput(name, value) {
         core.info(`SET ENV '${name}' = ${value}`);
+        core.setOutput(name, value);
         core.exportVariable(name, value);
     }
 
-    setVariable('FLUTTER_VERSION', version);
-    setVariable('FLUTTER_CHANNEL', channel);
+    setVariableAndOutput('FLUTTER_VERSION', version);
+    setVariableAndOutput('FLUTTER_CHANNEL', channel);
 } catch (error) {
     core.setFailed(error.message);
 }

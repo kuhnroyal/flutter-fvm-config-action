@@ -10,10 +10,11 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
     steps:
       - uses: actions/checkout@v2
       - uses: kuhnroyal/flutter-fvm-config-action@v1
+        id: fvm-config-action
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 ```
 
 ### Custom config path
@@ -21,12 +22,13 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
     steps:
       - uses: actions/checkout@v2
       - uses: kuhnroyal/flutter-fvm-config-action@v1
+        id: fvm-config-action
         with:
           path: 'some-path/.fvm/fvm_config.json'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 ```
 
 ### Reading specific flavor
@@ -34,10 +36,11 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
     steps:
       - uses: actions/checkout@v2
       - uses: kuhnroyal/flutter-fvm-config-action@v1
+        id: fvm-config-action
         with:
           flavor: 'staging'
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: ${{ env.FLUTTER_CHANNEL }}
+          flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
+          channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 ```
