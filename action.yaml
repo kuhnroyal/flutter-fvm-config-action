@@ -1,22 +1,22 @@
 name: 'Flutter FVM config action'
-description: 'Action that parses an FVM config file in order to configure the subosito/flutter-action.'
+description: 'Action that parses an .fvmrc file in order to configure the subosito/flutter-action.'
 author: 'Peter Leibiger'
 inputs:
   path:
-    description: 'Path to the FVM config file'
+    description: 'Path to the .fvmrc config file'
     required: false
-    default: '.fvm/fvm_config.json'
+    default: '.fvmrc'
   flavor:
     description: 'Flavor to use'
     required: false
     default: ''
 outputs:
   FLUTTER_VERSION:
-    description: 'The version of Flutter written in the fvm configuration file'
+    description: 'The version of Flutter specified in the .fvmrc file'
   FLUTTER_CHANNEL:
-    description: 'The channel of Flutter written in the fvm configuration file'
+    description: 'The channel of Flutter specified in the .fvmrc file'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 branding:
   icon: 'maximize'

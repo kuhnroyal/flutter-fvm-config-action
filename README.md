@@ -1,7 +1,13 @@
 # flutter-fvm-config-action
-An action that parses an [FVM](https://github.com/leoafarias/fvm) config file into environment variables which 
+An action that parses an [FVM](https://github.com/leoafarias/fvm) config file (.fvmrc) into environment variables which 
 can then be used to configure the [flutter-action](https://github.com/subosito/flutter-action).
 
+## Breaking changes
+
+### v1 -> v2
+- The action now reads the FVM config file from the default FVM 3.x location `.fvmrc`.
+  If the old behavior of reading the config from `.fvm/fvm_config.json` is desired, the `path` input can be used to
+  specify the old location. Alternatively, `kuhnroyal/fvm-config-action@v1` can be used to stick with the old behavior.
 
 ## Usage
 
@@ -24,7 +30,7 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
       - uses: kuhnroyal/flutter-fvm-config-action@v1
         id: fvm-config-action
         with:
-          path: 'some-path/.fvm/fvm_config.json'
+          path: 'some-path/.fvmrc'
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
