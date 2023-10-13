@@ -14,8 +14,8 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
 ### Basic usage
 ```yaml
     steps:
-      - uses: actions/checkout@v2
-      - uses: kuhnroyal/flutter-fvm-config-action@v1
+      - uses: actions/checkout@v4
+      - uses: kuhnroyal/flutter-fvm-config-action@v2
         id: fvm-config-action
       - uses: subosito/flutter-action@v2
         with:
@@ -26,8 +26,8 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
 ### Custom config path
 ```yaml
     steps:
-      - uses: actions/checkout@v2
-      - uses: kuhnroyal/flutter-fvm-config-action@v1
+      - uses: actions/checkout@v4
+      - uses: kuhnroyal/flutter-fvm-config-action@v2
         id: fvm-config-action
         with:
           path: 'some-path/.fvmrc'
@@ -40,8 +40,8 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
 ### Reading specific flavor
 ```yaml
     steps:
-      - uses: actions/checkout@v2
-      - uses: kuhnroyal/flutter-fvm-config-action@v1
+      - uses: actions/checkout@v4
+      - uses: kuhnroyal/flutter-fvm-config-action@v2
         id: fvm-config-action
         with:
           flavor: 'staging'
