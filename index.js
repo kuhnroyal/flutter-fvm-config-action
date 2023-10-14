@@ -26,7 +26,7 @@ try {
         }
     } else {
         core.info(`Reading default version`);
-        rawVersion = config['flutterSdkVersion'];
+        rawVersion = config['flutter'] ?? config['flutterSdkVersion'];
     }
 
     const parts = rawVersion.split('@');
