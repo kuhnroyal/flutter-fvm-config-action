@@ -2,13 +2,6 @@
 An action that parses an [FVM](https://github.com/leoafarias/fvm) config file (.fvmrc) into environment variables which 
 can then be used to configure the [flutter-action](https://github.com/subosito/flutter-action).
 
-## Breaking changes
-
-### v1 -> v2
-- The action now reads the FVM config file from the default FVM 3.x location `.fvmrc`.
-  If the old behavior of reading the config from `.fvm/fvm_config.json` is desired, the `path` input can be used to
-  specify the old location. Alternatively, `kuhnroyal/fvm-config-action@v1` can be used to stick with the old behavior.
-
 ## Usage
 
 ### Basic usage

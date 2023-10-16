@@ -2822,7 +2822,25 @@ const path = __nccwpck_require__(17);
 const core = __nccwpck_require__(186);
 
 try {
-    const configPath = core.getInput('path');
+    let configPath = core.getInput('path');
+
+    if (configPath) {
+        core.info(`Using specified config path: ${configPath}`);
+    } else {
+        configPath = '.fvmrc';
+        const fullPath = path.resolve(configPath);
+        if (fs.existsSync(fullPath)) {
+            core.info(`Using default config from: ${fullPath}`);
+        } else {
+            configPath = '.fvm/fvm_config.json';
+            const fullPath = path.resolve(configPath);
+            if (fs.existsSync(fullPath)) {
+                core.info(`Using default config from: ${fullPath}`);
+            } else {
+                core.setFailed('No valid FVM configuration file found!');
+            }
+        }
+    }
 
     const fullPath = path.resolve(configPath);
     core.info(`Processing file: ${fullPath}`);
