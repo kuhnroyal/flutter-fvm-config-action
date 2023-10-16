@@ -5,18 +5,17 @@ inputs:
   path:
     description: 'Path to the FVM config file'
     required: false
-    default: '.fvm/fvm_config.json'
   flavor:
     description: 'Flavor to use'
     required: false
     default: ''
 outputs:
   FLUTTER_VERSION:
-    description: 'The version of Flutter written in the fvm configuration file'
+    description: 'The version of Flutter specified in the fvm configuration file'
   FLUTTER_CHANNEL:
-    description: 'The channel of Flutter written in the fvm configuration file'
+    description: 'The channel of Flutter specified in the fvm configuration file'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
 branding:
   icon: 'maximize'
