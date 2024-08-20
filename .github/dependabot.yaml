@@ -5,6 +5,6 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: 'npm'
-    directory: '/'
+    directory: 'config-action'
     schedule:
       interval: 'weekly'
