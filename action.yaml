@@ -1,5 +1,5 @@
 name: 'Flutter FVM config action'
-description: 'Action that parses an FVM config file in order to configure the subosito/flutter-action.'
+description: 'Action that parses an FVM config file in order to configure or setup the subosito/flutter-action.'
 author: 'Peter Leibiger'
 inputs:
   path:
@@ -9,14 +9,31 @@ inputs:
     description: 'Flavor to use'
     required: false
     default: ''
+  setup-flutter:
+    description: 'Setup Flutter (default: false)'
+    required: false
+    default: 'false'
 outputs:
   FLUTTER_VERSION:
     description: 'The version of Flutter specified in the fvm configuration file'
+    value: ${{ steps.config-action.outputs.FLUTTER_VERSION }}
   FLUTTER_CHANNEL:
     description: 'The channel of Flutter specified in the fvm configuration file'
+    value: ${{ steps.config-action.outputs.FLUTTER_CHANNEL }}
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: 'composite'
+  steps:
+    - uses: ./config-action
+      id: config-action
+      with:
+        path: ${{ inputs.path }}
+        flavor: ${{ inputs.flavor }}
+    - uses: subosito/flutter-action@v2
+      if: inputs.setup-flutter == 'true'
+      with:
+        cache: true
+        flutter-version: ${{ steps.config-action.outputs.FLUTTER_VERSION }}
+        channel: ${{ steps.config-action.outputs.FLUTTER_CHANNEL }}
 branding:
   icon: 'maximize'
   color: 'blue'
