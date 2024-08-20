@@ -26,8 +26,8 @@ jobs:
       - run: echo ${{ env.FLUTTER_VERSION }}
       - run: echo ${{ env.FLUTTER_CHANNEL }}
 
-  test-setup:
-    name: Setup
+  test-setup-flutter:
+    name: Setup Flutter
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -36,5 +36,5 @@ jobs:
         uses: ./
         with:
           path: test/.fvmrc
-          setup-flutter: true
+          setup: true
       - run: flutter --version

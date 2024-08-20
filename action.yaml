@@ -9,7 +9,7 @@ inputs:
     description: 'Flavor to use'
     required: false
     default: ''
-  setup-flutter:
+  setup:
     description: 'Setup Flutter (default: false)'
     required: false
     default: 'false'
@@ -23,13 +23,15 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - uses: ./config-action
+    - name: Parse configuration
+      uses: ./config-action
       id: config-action
       with:
         path: ${{ inputs.path }}
         flavor: ${{ inputs.flavor }}
-    - uses: subosito/flutter-action@v2
-      if: inputs.setup-flutter == 'true'
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      if: inputs.setup == 'true'
       with:
         cache: true
         flutter-version: ${{ steps.config-action.outputs.FLUTTER_VERSION }}
