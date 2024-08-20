@@ -1,0 +1,40 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+# Ensure that new pushes/updates cancel running jobs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-config:
+    name: Config only
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Flutter
+        id: config
+        uses: ./
+        with:
+          path: test/.fvmrc
+      - run: echo ${{ steps.config.outputs.FLUTTER_VERSION }}
+      - run: echo ${{ steps.config.outputs.FLUTTER_CHANNEL }}
+      - run: echo ${{ env.FLUTTER_VERSION }}
+      - run: echo ${{ env.FLUTTER_CHANNEL }}
+
+  test-setup:
+    name: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Flutter
+        uses: ./
+        with:
+          path: test/.fvmrc
+          setup-flutter: true
+      - run: flutter --version
