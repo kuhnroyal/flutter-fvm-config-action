@@ -4,7 +4,24 @@ can then be used to configure the [flutter-action](https://github.com/subosito/f
 
 ## Usage
 
+All the sample options below can be combined with each other.
+
 ### Basic usage
+
+The configuration will parse the FVM configuration and use subosito/flutter-action to install & cache the configured Flutter version.
+
+```yaml
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kuhnroyal/flutter-fvm-config-action@v2
+        with:
+          # The setup flag enables installation of the Flutter SDK, will default to true in the next major version (v3)
+          setup: true
+          # The cache flag enables caching of the Flutter SDK, default is true - if setup is true
+          cache: true
+```
+
+### Basic usage with manual configuration
 ```yaml
     steps:
       - uses: actions/checkout@v4

@@ -9,10 +9,14 @@ inputs:
     description: 'Flavor to use'
     required: false
     default: ''
-  setup-flutter:
-    description: 'Setup Flutter (default: false)'
+  setup:
+    description: 'Setup Flutter via "subosito/flutter-action"? (default: false)'
     required: false
     default: 'false'
+  cache:
+    description: 'Cache Flutter via "subosito/flutter-action"? (default: true - if setup is true)'
+    required: false
+    default: 'true'
 outputs:
   FLUTTER_VERSION:
     description: 'The version of Flutter specified in the fvm configuration file'
@@ -23,15 +27,17 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - uses: ./config-action
+    - name: Parse configuration
+      uses: ./config-action
       id: config-action
       with:
         path: ${{ inputs.path }}
         flavor: ${{ inputs.flavor }}
-    - uses: subosito/flutter-action@v2
-      if: inputs.setup-flutter == 'true'
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      if: inputs.setup == 'true'
       with:
-        cache: true
+        cache: ${{ inputs.cache }}
         flutter-version: ${{ steps.config-action.outputs.FLUTTER_VERSION }}
         channel: ${{ steps.config-action.outputs.FLUTTER_CHANNEL }}
 branding:
