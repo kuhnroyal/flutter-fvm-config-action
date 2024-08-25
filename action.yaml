@@ -20,16 +20,16 @@ inputs:
 outputs:
   FLUTTER_VERSION:
     description: 'The version of Flutter specified in the fvm configuration file'
-    value: ${{ steps.config-action.outputs.FLUTTER_VERSION }}
+    value: ${{ steps.config.outputs.FLUTTER_VERSION }}
   FLUTTER_CHANNEL:
     description: 'The channel of Flutter specified in the fvm configuration file'
-    value: ${{ steps.config-action.outputs.FLUTTER_CHANNEL }}
+    value: ${{ steps.config.outputs.FLUTTER_CHANNEL }}
 runs:
   using: 'composite'
   steps:
     - name: Parse configuration
-      uses: ${{ github.action_path }}/config-action
-      id: config-action
+      uses: kuhnroyal/flutter-fvm-config-action/config@v2
+      id: config
       with:
         path: ${{ inputs.path }}
         flavor: ${{ inputs.flavor }}
@@ -38,8 +38,8 @@ runs:
       if: inputs.setup == 'true'
       with:
         cache: ${{ inputs.cache }}
-        flutter-version: ${{ steps.config-action.outputs.FLUTTER_VERSION }}
-        channel: ${{ steps.config-action.outputs.FLUTTER_CHANNEL }}
+        flutter-version: ${{ steps.config.outputs.FLUTTER_VERSION }}
+        channel: ${{ steps.config.outputs.FLUTTER_CHANNEL }}
 branding:
   icon: 'maximize'
   color: 'blue'
