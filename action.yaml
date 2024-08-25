@@ -28,7 +28,7 @@ runs:
   using: 'composite'
   steps:
     - name: Parse configuration
-      uses: ./config-action
+      uses: ${{ github.action_path }}/config-action
       id: config-action
       with:
         path: ${{ inputs.path }}
