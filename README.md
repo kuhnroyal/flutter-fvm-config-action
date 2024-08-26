@@ -60,3 +60,8 @@ The configuration will parse the FVM configuration and use subosito/flutter-acti
           flutter-version: ${{ steps.fvm-config-action.outputs.FLUTTER_VERSION }}
           channel: ${{ steps.fvm-config-action.outputs.FLUTTER_CHANNEL }}
 ```
+
+### Caching
+
+This action supports all cache inputs from the [subosito/flutter-action](https://github.com/subosito/flutter-action):
+See https://github.com/subosito/flutter-action#caching for more information.
