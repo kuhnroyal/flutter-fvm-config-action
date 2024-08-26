@@ -17,6 +17,22 @@ inputs:
     description: 'Cache Flutter via "subosito/flutter-action"? (default: true - if setup is true)'
     required: false
     default: 'true'
+  cache-key:
+    description: 'Identifier for the Flutter SDK cache'
+    required: false
+    default: ''
+  cache-path:
+    description: 'Flutter SDK cache path'
+    required: false
+    default: ''
+  pub-cache-key:
+    description: 'Identifier for the Dart .pub-cache cache'
+    required: false
+    default: ''
+  pub-cache-path:
+    description: 'Flutter pub cache path'
+    required: false
+    default: default
 outputs:
   FLUTTER_VERSION:
     description: 'The version of Flutter specified in the fvm configuration file'
@@ -37,9 +53,13 @@ runs:
       uses: subosito/flutter-action@v2
       if: inputs.setup == 'true'
       with:
-        cache: ${{ inputs.cache }}
         flutter-version: ${{ steps.config.outputs.FLUTTER_VERSION }}
         channel: ${{ steps.config.outputs.FLUTTER_CHANNEL }}
+        cache: ${{ inputs.cache }}
+        cache-key: ${{ inputs.cache-key }}
+        cache-path: ${{ inputs.cache-path }}
+        pub-cache-key: ${{ inputs.pub-cache-key }}
+        pub-cache-path: ${{ inputs.pub-cache-path }}
 branding:
   icon: 'maximize'
   color: 'blue'
