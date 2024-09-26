@@ -37,7 +37,7 @@ runs:
   using: 'composite'
   steps:
     - name: Parse configuration
-      uses: kuhnroyal/flutter-fvm-config-action/config@develop
+      uses: kuhnroyal/flutter-fvm-config-action/config@v3
       id: config
       with:
         path: ${{ inputs.path }}

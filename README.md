@@ -15,15 +15,15 @@ The configuration will parse the FVM configuration and use subosito/flutter-acti
 ```yaml
     steps:
       - uses: actions/checkout@v4
-      - uses: kuhnroyal/flutter-fvm-config-action/setup@develop
+      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
 ```
 
-### Manual configuration & setup  `kuhnroyal/flutter-fvm-config-action/config`
+### Manual configuration & setup `kuhnroyal/flutter-fvm-config-action/config`
 
 ```yaml
     steps:
       - uses: actions/checkout@v4
-      - uses: kuhnroyal/flutter-fvm-config-action/config@develop
+      - uses: kuhnroyal/flutter-fvm-config-action/config@v3
         id: fvm-config-action
       - uses: subosito/flutter-action@v2
         with:
@@ -45,7 +45,7 @@ If you have a custom path for your `.fvmrc` file, you can set it with the `path`
 ```yaml
     steps:
       - uses: actions/checkout@v4
-      - uses: kuhnroyal/flutter-fvm-config-action/setup@develop
+      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
         with:
           path: 'some-path/.fvmrc'
 ```
@@ -57,7 +57,7 @@ If you require a specific flavor, you can set it with the `flavor` input.
 ```yaml
     steps:
       - uses: actions/checkout@v4
-      - uses: kuhnroyal/flutter-fvm-config-action/setup@develop
+      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
         with:
           flavor: 'staging'
 ```
@@ -69,7 +69,7 @@ Analytics are disabled by default. To enable them, set `disable-analytics` to `f
 ```yaml
     steps:
       - uses: actions/checkout@v4
-      - uses: kuhnroyal/flutter-fvm-config-action/setup@develop
+      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
         with:
           disable-analytics: false
 ```
