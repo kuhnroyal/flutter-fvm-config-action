@@ -10,8 +10,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test-config:
-    name: Config only
+  test-config-old:
+    name: Config only (old)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -26,8 +26,8 @@ jobs:
       - run: echo ${{ env.FLUTTER_VERSION }}
       - run: echo ${{ env.FLUTTER_CHANNEL }}
 
-  test-setup-flutter:
-    name: Setup Flutter
+  test-setup-flutter-old:
+    name: Setup Flutter (old)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,3 +38,32 @@ jobs:
           path: test/.fvmrc
           setup: true
       - run: flutter --version
+
+  test-config:
+    name: Config only
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Flutter
+        id: config
+        uses: ./config
+        with:
+          path: test/.fvmrc
+      - run: echo ${{ steps.config.outputs.FLUTTER_VERSION }}
+      - run: echo ${{ steps.config.outputs.FLUTTER_CHANNEL }}
+      - run: echo ${{ env.FLUTTER_VERSION }}
+      - run: echo ${{ env.FLUTTER_CHANNEL }}
+
+  test-setup-flutter:
+    name: Setup Flutter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Flutter
+        uses: ./setup
+        with:
+          path: test/.fvmrc
+      - run: flutter --version
+

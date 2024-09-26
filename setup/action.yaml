@@ -1,5 +1,5 @@
-name: 'Flutter FVM config action'
-description: 'Action that parses an FVM config file in order to configure or setup the subosito/flutter-action.'
+name: 'Flutter FVM setup action'
+description: 'Action that parses an FVM config file and sets up the subosito/flutter-action.'
 author: 'Peter Leibiger'
 inputs:
   path:
@@ -9,10 +9,6 @@ inputs:
     description: 'Flavor to use'
     required: false
     default: ''
-  setup:
-    description: 'Setup Flutter via "subosito/flutter-action"? (default: false)'
-    required: false
-    default: 'false'
   disable-analytics:
     description: 'Disable analytics for Flutter and Dart'
     required: false
@@ -20,7 +16,7 @@ inputs:
   cache:
     description: 'Cache Flutter via "subosito/flutter-action"? (default: true - if setup is true)'
     required: false
-    default: 'false'
+    default: 'true'
   cache-key:
     description: 'Identifier for the Flutter SDK cache'
     required: false
@@ -37,13 +33,6 @@ inputs:
     description: 'Flutter pub cache path'
     required: false
     default: default
-outputs:
-  FLUTTER_VERSION:
-    description: 'The version of Flutter specified in the fvm configuration file'
-    value: ${{ steps.config.outputs.FLUTTER_VERSION }}
-  FLUTTER_CHANNEL:
-    description: 'The channel of Flutter specified in the fvm configuration file'
-    value: ${{ steps.config.outputs.FLUTTER_CHANNEL }}
 runs:
   using: 'composite'
   steps:
@@ -55,7 +44,6 @@ runs:
         flavor: ${{ inputs.flavor }}
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
-      if: inputs.setup == 'true'
       with:
         flutter-version: ${{ steps.config.outputs.FLUTTER_VERSION }}
         channel: ${{ steps.config.outputs.FLUTTER_CHANNEL }}
@@ -65,7 +53,7 @@ runs:
         pub-cache-key: ${{ inputs.pub-cache-key }}
         pub-cache-path: ${{ inputs.pub-cache-path }}
     - shell: sh
-      if: inputs.setup == 'true' && inputs.disable-analytics == 'true'
+      if: inputs.disable-analytics == 'true'
       run: |
         flutter config --no-analytics
         dart --disable-analytics

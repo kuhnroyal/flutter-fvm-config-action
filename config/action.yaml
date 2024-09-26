@@ -1,5 +1,5 @@
 name: 'Flutter FVM config action'
-description: 'Action that parses an FVM config file in order to configure the subosito/flutter-action.'
+description: 'Action that parses an FVM config file and provides the version/channel as output/env variables.'
 author: 'Peter Leibiger'
 inputs:
   path:
