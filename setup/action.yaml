@@ -33,6 +33,10 @@ inputs:
     description: 'Flutter pub cache path'
     required: false
     default: default
+  post-setup-script:
+    description: 'Any commands to run after setting up Flutter. For example enabling/disabling config settings.'
+    required: false
+    default: ''
 runs:
   using: 'composite'
   steps:
@@ -57,6 +61,9 @@ runs:
       run: |
         flutter config --no-analytics
         dart --disable-analytics
+    - shell: sh
+      if: inputs.post-setup-script != ''
+      run: ${{ inputs.post-setup-script }}
 branding:
   icon: 'maximize'
   color: 'blue'

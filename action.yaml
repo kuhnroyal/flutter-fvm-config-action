@@ -13,6 +13,10 @@ inputs:
     description: 'Setup Flutter via "subosito/flutter-action"? (default: false)'
     required: false
     default: 'false'
+  post-setup-script:
+    description: 'Any commands to run after setting up Flutter. For example enabling/disabling config settings.'
+    required: false
+    default: ''
   disable-analytics:
     description: 'Disable analytics for Flutter and Dart'
     required: false
@@ -69,6 +73,9 @@ runs:
       run: |
         flutter config --no-analytics
         dart --disable-analytics
+    - shell: sh
+      if: inputs.setup == 'true' && inputs.post-setup-script != ''
+      run: ${{ inputs.post-setup-script }}
 branding:
   icon: 'maximize'
   color: 'blue'

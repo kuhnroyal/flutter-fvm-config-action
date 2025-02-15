@@ -74,6 +74,21 @@ Analytics are disabled by default. To enable them, set `disable-analytics` to `f
           disable-analytics: false
 ```
 
+
+### Post setup script
+
+Run custom Flutter configuration here.
+
+```yaml
+    steps:
+      - uses: actions/checkout@v4
+      - uses: kuhnroyal/flutter-fvm-config-action/setup@v3
+        with:
+          post-setup-script: |
+            echo "Setup done!"
+            flutter config --enable-swift-package-manager
+```
+
 ### Caching
 
 This action supports all cache inputs from the [subosito/flutter-action](https://github.com/subosito/flutter-action):
