@@ -65,5 +65,8 @@ jobs:
         uses: ./setup
         with:
           path: test/.fvmrc
+          post-setup-script: |
+            echo "Setup done!"
+            flutter config --enable-swift-package-manager
       - run: flutter --version
 
