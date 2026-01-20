@@ -37,6 +37,13 @@ inputs:
     description: 'Any commands to run after setting up Flutter. For example enabling/disabling config settings.'
     required: false
     default: ''
+outputs:
+  FLUTTER_VERSION:
+    description: 'The version of Flutter specified in the fvm configuration file'
+    value: ${{ steps.config.outputs.FLUTTER_VERSION }}
+  FLUTTER_CHANNEL:
+    description: 'The channel of Flutter specified in the fvm configuration file'
+    value: ${{ steps.config.outputs.FLUTTER_CHANNEL }}
 runs:
   using: 'composite'
   steps:
