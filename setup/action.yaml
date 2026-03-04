@@ -48,13 +48,13 @@ runs:
   using: 'composite'
   steps:
     - name: Parse configuration
-      uses: kuhnroyal/flutter-fvm-config-action/config@v3
+      uses: kuhnroyal/flutter-fvm-config-action/config@fcdb62b682dade6f0d9e0c6eae6acc647ca8c31d # v3.2
       id: config
       with:
         path: ${{ inputs.path }}
         flavor: ${{ inputs.flavor }}
     - name: Setup Flutter
-      uses: subosito/flutter-action@v2
+      uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2.21.0
       with:
         flutter-version: ${{ steps.config.outputs.FLUTTER_VERSION }}
         channel: ${{ steps.config.outputs.FLUTTER_CHANNEL }}
