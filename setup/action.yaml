@@ -48,7 +48,7 @@ runs:
   using: 'composite'
   steps:
     - name: Parse configuration
-      uses: ../config
+      uses: ./../config
       id: config
       with:
         path: ${{ inputs.path }}
