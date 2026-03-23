@@ -15,7 +15,7 @@ outputs:
   FLUTTER_CHANNEL:
     description: 'The channel of Flutter specified in the fvm configuration file'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
 branding:
   icon: 'maximize'
