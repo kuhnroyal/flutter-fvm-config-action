@@ -33,6 +33,10 @@ inputs:
     description: 'Flutter SDK cache path'
     required: false
     default: ''
+  pub-cache:
+    description: 'Cache the Dart pub dependencies via "subosito/flutter-action"? (default: true - if setup is true)'
+    required: false
+    default: 'true'
   pub-cache-key:
     description: 'Identifier for the Dart .pub-cache cache'
     required: false
@@ -66,6 +70,7 @@ runs:
         cache: ${{ inputs.cache }}
         cache-key: ${{ inputs.cache-key }}
         cache-path: ${{ inputs.cache-path }}
+        pub-cache: ${{ inputs.pub-cache }}
         pub-cache-key: ${{ inputs.pub-cache-key }}
         pub-cache-path: ${{ inputs.pub-cache-path }}
     - shell: sh
