@@ -1,7 +1,7 @@
 # flutter-fvm-config-action
 
 > [!WARNING]
-> **This action is deprecated.** The [subosito/flutter-action](https://github.com/subosito/flutter-action) now supports reading FVM config files natively as of [v2.23.0](https://github.com/subosito/flutter-action/releases/tag/v2.23.0). You can migrate by using the `flutter-version-file` input with your `.fvmrc` or `.fvm/fvm_config.json` file directly. See the [migration issue](https://github.com/kuhnroyal/flutter-fvm-config-action/issues) for details.
+> **This action is deprecated.** The [subosito/flutter-action](https://github.com/subosito/flutter-action) now supports reading FVM config files natively as of [v2.23.0](https://github.com/subosito/flutter-action/releases/tag/v2.23.0). You can migrate by using the `flutter-version-file` input with your `.fvmrc` or `.fvm/fvm_config.json` file directly. See the [migration issue](https://github.com/kuhnroyal/flutter-fvm-config-action/issues/48) for details.
 
 An action that parses an [FVM](https://github.com/leoafarias/fvm) config file `.fvmrc` and configures the [subosito/flutter-action](https://github.com/subosito/flutter-action)
 to install the Flutter SDK.
